@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://c3k8k8cvxymas"]
+
+[ext_resource type="PackedScene" uid="uid://ckdo7sk6x212r" path="res://scenes/spider.tscn" id="1_t76o2"]
+[ext_resource type="Texture2D" uid="uid://cwhgnup7gn5cn" path="res://assets/Ghost.png" id="2_l5lq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbnym"]
+atlas = ExtResource("2_l5lq6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veat2"]
+atlas = ExtResource("2_l5lq6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mfnq"]
+atlas = ExtResource("2_l5lq6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv6vd"]
+atlas = ExtResource("2_l5lq6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sv5gc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbnym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veat2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mfnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv6vd")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}]
+
+[node name="Spider" unique_id=490031325 instance=ExtResource("1_t76o2")]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="0" unique_id=2062830682]
+sprite_frames = SubResource("SpriteFrames_sv5gc")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.45863765
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=2070161217]
+visible = false

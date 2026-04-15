@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://beketvmc5wdho"]
+
+[ext_resource type="PackedScene" uid="uid://c0eq1wben2gey" path="res://scenes/Levels/base_level.tscn" id="1_oyxej"]
+[ext_resource type="Texture2D" uid="uid://decuc52xfvn85" path="res://assets/Lord_of_the_idle_night.png" id="2_wl3pv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oyxej"]
+font_size = 200
+outline_size = 50
+outline_color = Color(0, 0, 0, 1)
+
+[node name="LevelRoot" unique_id=684497788 instance=ExtResource("1_oyxej")]
+
+[node name="TileMapLayer_Terrain" parent="." index="0" unique_id=470474581]
+visible = false
+
+[node name="TileMapLayer_Decoration" parent="." index="1" unique_id=1162116788]
+visible = false
+
+[node name="Hero" parent="." index="2" unique_id=79891877]
+visible = false
+position = Vector2(632, 318)
+
+[node name="Enemies" parent="." index="3" unique_id=1631504639]
+visible = false
+
+[node name="Spider" parent="Enemies" index="0" unique_id=490031325]
+visible = false
+
+[node name="Exit" parent="." index="4" unique_id=315995513]
+visible = false
+
+[node name="CollisionShape2D" parent="Exit" index="0" unique_id=1209422938]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=865074099]
+
+[node name="Label" type="Label" parent="CanvasLayer" index="0" unique_id=1661216076]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_oyxej")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="6" unique_id=751723369]
+position = Vector2(-1349, 667)
+scale = Vector2(40, 40)
+texture = ExtResource("2_wl3pv")
+
+[node name="ColorRect" type="ColorRect" parent="." index="7" unique_id=172985167]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 1529.0
+offset_bottom = 1221.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15487596, 0.154876, 0.15487596, 1)

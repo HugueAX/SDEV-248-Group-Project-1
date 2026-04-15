@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://bpi2qf57ivdtl"]
+
+[ext_resource type="Script" uid="uid://b47q5uuxsid87" path="res://scripts/boss.gd" id="1_goofe"]
+[ext_resource type="Texture2D" uid="uid://b1pmx1gjsdefo" path="res://assets/lord_of_the_shoot.png" id="2_a4l8u"]
+[ext_resource type="PackedScene" uid="uid://dujwvvfvbagyw" path="res://scenes/bullet.tscn" id="2_vtbop"]
+[ext_resource type="Texture2D" uid="uid://fr2nmkn78np1" path="res://assets/lord_of_the_walking_night.png" id="3_j7e36"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8b61a"]
+size = Vector2(26, 32)
+
+[sub_resource type="Animation" id="Animation_k348i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShootSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WalkSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hros5"]
+resource_name = "idle"
+length = 0.69
+step = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShootSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.157149, 0.309394, 0.45551),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_8d8r4"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WalkSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.156915, 0.306474, 0.501061),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m32td"]
+_data = {
+&"RESET": SubResource("Animation_k348i"),
+&"shoot": SubResource("Animation_hros5"),
+&"walk": SubResource("Animation_8d8r4")
+}
+
+[node name="Boss" type="CharacterBody2D" unique_id=1510033175]
+scale = Vector2(4, 4)
+collision_layer = 2
+script = ExtResource("1_goofe")
+bullet_scene = ExtResource("2_vtbop")
+
+[node name="WalkSprite" type="Sprite2D" parent="." unique_id=1258288539]
+texture = ExtResource("3_j7e36")
+hframes = 4
+
+[node name="ShootSprite" type="Sprite2D" parent="." unique_id=35942901]
+visible = false
+texture = ExtResource("2_a4l8u")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1504685941]
+shape = SubResource("RectangleShape2D_8b61a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=744979775]
+libraries/ = SubResource("AnimationLibrary_m32td")
+speed_scale = 1.078
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=852162755]
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

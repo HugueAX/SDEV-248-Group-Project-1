@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://xx31u7j5ri6s"]
+
+[ext_resource type="PackedScene" uid="uid://ckdo7sk6x212r" path="res://scenes/spider.tscn" id="1_ye80u"]
+[ext_resource type="Texture2D" uid="uid://kb8h8rh3vm0f" path="res://assets/demon.png" id="2_3t42y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofewj"]
+atlas = ExtResource("2_3t42y")
+region = Rect2(2, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt4xr"]
+atlas = ExtResource("2_3t42y")
+region = Rect2(19, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6uwn"]
+atlas = ExtResource("2_3t42y")
+region = Rect2(36, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1cvy"]
+atlas = ExtResource("2_3t42y")
+region = Rect2(53, 0, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye80u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofewj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt4xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6uwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1cvy")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}]
+
+[node name="Spider" unique_id=490031325 instance=ExtResource("1_ye80u")]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="0" unique_id=2017039570]
+sprite_frames = SubResource("SpriteFrames_ye80u")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.90921855
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=2070161217]
+visible = false

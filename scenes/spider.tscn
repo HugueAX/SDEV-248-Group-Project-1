@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://ckdo7sk6x212r"]
+
+[ext_resource type="Script" uid="uid://i1bjtlvgkb2k" path="res://scripts/spider.gd" id="1_algeo"]
+[ext_resource type="Texture2D" uid="uid://7okmn6mlji76" path="res://assets/Spider.png" id="1_c7em6"]
+[ext_resource type="PackedScene" uid="uid://tanjeqafd3qj" path="res://scenes/health_bar.tscn" id="3_k5hg5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_algeo"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(1, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5hg5"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(18, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d613k"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(35, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evcmw"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(52, 0, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txxy0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_algeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5hg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d613k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evcmw")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7em6"]
+radius = 7.566373
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_algeo"]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5hg5"]
+radius = 7.566373
+
+[node name="Spider" type="CharacterBody2D" unique_id=490031325]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_algeo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2070161217]
+sprite_frames = SubResource("SpriteFrames_txxy0")
+animation = &"move"
+autoplay = "move"
+frame = 1
+frame_progress = 0.8003036
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1673187355]
+shape = SubResource("CircleShape2D_c7em6")
+
+[node name="Sight" type="Area2D" parent="." unique_id=1051197948]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight" unique_id=1933373432]
+shape = SubResource("CircleShape2D_algeo")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1251615476]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1258094082]
+shape = SubResource("CircleShape2D_k5hg5")
+
+[node name="HealthBar" parent="." unique_id=148394616 instance=ExtResource("3_k5hg5")]
+position = Vector2(-7.5, -13)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1121524266]
+
+[connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

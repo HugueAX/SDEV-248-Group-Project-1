@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://yrj37ajfcu4i"]
+
+[ext_resource type="PackedScene" uid="uid://c0eq1wben2gey" path="res://scenes/Levels/base_level.tscn" id="1_fxlf4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxlf4"]
+font_size = 100
+
+[node name="LevelRoot" unique_id=684497788 instance=ExtResource("1_fxlf4")]
+
+[node name="TileMapLayer_Terrain" parent="." index="0" unique_id=470474581]
+visible = false
+
+[node name="TileMapLayer_Decoration" parent="." index="1" unique_id=1162116788]
+visible = false
+
+[node name="Hero" parent="." index="2" unique_id=79891877]
+visible = false
+position = Vector2(640, 360)
+
+[node name="Enemies" parent="." index="3" unique_id=1631504639]
+visible = false
+
+[node name="Spider" parent="Enemies" index="0" unique_id=490031325]
+visible = false
+
+[node name="Exit" parent="." index="4" unique_id=315995513]
+visible = false
+
+[node name="CollisionShape2D" parent="Exit" index="0" unique_id=1209422938]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=1238805761]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0" unique_id=1489791575]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(26.119997, 10.5599985)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer" index="1" unique_id=185294535]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.995772)
+text = "
+         The Evil has been 
+               defeated!"
+label_settings = SubResource("LabelSettings_fxlf4")

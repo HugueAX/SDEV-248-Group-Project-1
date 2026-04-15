@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://btk3b26gn5wt6"]
+
+[ext_resource type="Script" uid="uid://cpkcaauqt21q" path="res://scripts/title_screen.gd" id="1_fgkus"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+outline_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_sa3yf"]
+font_size = 40
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="LevelRoot" type="Node2D" unique_id=555948843]
+
+[node name="TitleScreen" type="Control" parent="." unique_id=616399576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgkus")
+
+[node name="Start" type="Button" parent="TitleScreen" unique_id=1816491966]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 582.0
+offset_top = 542.0
+offset_right = 728.0
+offset_bottom = 610.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+
+[node name="Title" type="Label" parent="TitleScreen" unique_id=919125025]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 253.0
+offset_top = 21.0
+offset_right = 1056.0
+offset_bottom = 158.0
+grow_horizontal = 2
+text = "Fangtastic Fright"
+label_settings = SubResource("LabelSettings_fgkus")
+
+[node name="Message" type="Label" parent="TitleScreen" unique_id=975712462]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 222.0
+offset_top = 188.0
+offset_right = 1108.0
+offset_bottom = 475.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You've been entrusted to vanquish 
+the evil Lord of the Night and his minions.
+Will you be able to save humanity from 
+destruction? Begin by finding and descending 
+the stairs to his layer."
+label_settings = SubResource("LabelSettings_sa3yf")
+
+[connection signal="pressed" from="TitleScreen/Start" to="TitleScreen" method="_on_start_pressed"]

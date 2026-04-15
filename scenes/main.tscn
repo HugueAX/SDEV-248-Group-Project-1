@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://qq7vn8vn2hbb"]
+
+[ext_resource type="Script" uid="uid://dmo61ivadpcvg" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://ckq2vvkolvsau" path="res://scenes/HUD.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c0eq1wben2gey" path="res://scenes/Levels/base_level.tscn" id="3_sugp2"]
+
+[node name="Main" type="Node2D" unique_id=1548612491]
+script = ExtResource("1_0wfyh")
+
+[node name="LevelRoot" parent="." unique_id=684497788 instance=ExtResource("3_sugp2")]
+visible = false
+position = Vector2(-1374, -1271)
+
+[node name="HUD" parent="." unique_id=1243933845 instance=ExtResource("3_jyhfs")]
